@@ -1,5 +1,8 @@
 language: go
-  go:
-    - "1.10.x"
-    - "1.11.x"
-    - master
+
+go:
+  - "1.11.x"
+
+go_import_path: github.com/tgglv/wc-api-go
+
+script: go test -v ./...
