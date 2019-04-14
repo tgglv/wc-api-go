@@ -31,19 +31,21 @@ Setup for the new WP REST API integration:
 ```go
 import "github.com/tgglv/wc-api-go/client"
 
-factory := client.Factory{}
-c := factory.NewClient()
+func main() {
+	factory := client.Factory{}
+	c := factory.NewClient(options.Basic{
+		URL:    "http://example.com",
+		Key:    "ck_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		Secret: "cs_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		Options: options.Advanced{
+			WPAPI:       true,
+			WPAPIPrefix: "/wp-json/",
+			Version:     "wc/v3",
+		},
+	})
 
-c.SetOptions(client.BasicOptions{
-    URL:    "http://example.com",
-    Key:    "ck_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    Secret: "cs_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    Options: client.AdvancedOptions{
-        WPAPI:       true,
-        WPAPIPrefix: "/wp-json/",
-        Version:     "wc/v3",
-    },
-})
+	// Further using of client ... 
+}
 ```
 
 ### Options
@@ -154,4 +156,5 @@ func main() {
 
 ## Release History
 
+- 2019-04-14 - 1.0.1 - Fix sample integration setup in README.md
 - 2019-01-12 - 1.0.0 - First Release
