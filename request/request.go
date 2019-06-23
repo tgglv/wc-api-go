@@ -9,4 +9,5 @@ type Request struct {
 	Method   string
 	Endpoint string
 	Values   url.Values
+	JSONBody string
 }
